@@ -18,8 +18,8 @@ header{
                     display:flex;
                     justify-content:space-between;
                     align-items:center;
-                    padding:15px 0;
-                    width:90%;
+                    padding:10px 0;
+                    width:100%;
                     max-width:1200px;
                     margin:auto;
                 }
@@ -46,7 +46,7 @@ header{
                 }
 
                 nav ul li{
-                    margin-left:25px;
+                    margin-left:20px;
                 }
 
                 nav ul li a{color:white;
