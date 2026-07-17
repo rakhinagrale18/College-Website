@@ -1,0 +1,1158 @@
+/* ======================================
+        GOOGLE FONT & RESET
+====================================== */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    background:#f5f7fb;
+    color:#333;
+    overflow-x:hidden;
+
+}
+
+
+
+a{
+    text-decoration:none;
+}
+
+
+
+
+
+/* ======================================
+              HEADER
+====================================== */
+
+
+header{
+            background-color: #0a2a66;
+            color: #fff;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+
+.navbar{
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            padding: 0 20px;
+
+}
+
+
+
+
+
+.logo{
+
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+
+}
+
+
+
+
+.logo img{
+
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+
+}
+
+
+
+
+.nav-menu{
+
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin-right: -100px;
+
+}   
+
+
+
+
+.nav-menu li{
+
+    list-style:none;
+
+}
+
+
+
+
+.nav-menu ul {
+
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;  
+
+}
+
+
+
+
+.nav-menu a{
+
+            color:white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size:16px;
+
+}
+
+
+
+
+
+.nav-menu a:hover{
+
+            color: #ffcc00;
+            border-bottom: 4px solid #ffcc00;
+            border-bottom-right-radius: 9px;
+            border-bottom-left-radius: 9px;
+
+}
+
+
+
+
+
+
+
+/* SIGNUP BUTTON */
+
+
+
+
+
+.signup-btn:hover{
+
+    border:none !important;
+    background:white;
+
+}
+
+
+
+
+
+
+
+
+/* ======================================
+          HAMBURGER ICON
+====================================== */
+
+
+.hamburger{
+
+    display:none;
+    cursor:pointer;
+
+}
+
+
+
+.hamburger span{
+
+    display:block;
+    width:28px;
+    height:3px;
+    background:white;
+    margin:6px;
+    border-radius:5px;
+
+}
+/* ======================================
+              HERO SECTION
+====================================== */
+
+
+.hero{
+
+    height:100vh;
+    background:
+    linear-gradient(
+    rgba(10,42,102,0.75),
+    rgba(10,42,102,0.75)
+    ),
+    url("https://images.unsplash.com/photo-1564981797816-1043664bf78d")
+    center/cover no-repeat;
+
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+
+}
+
+
+
+.hero-content{
+
+    max-width:800px;
+    padding:20px;
+
+}
+
+
+
+.hero-content h1{
+
+    font-size:55px;
+    margin-bottom:20px;
+    font-weight:700;
+
+}
+
+
+
+
+.hero-content p{
+
+    font-size:20px;
+    line-height:1.7;
+    margin-bottom:30px;
+
+}
+
+
+
+
+.hero-btn{
+
+    display:inline-block;
+    background:#ffcc00;
+    color:#0a2a66;
+    padding:14px 35px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+
+
+.hero-btn:hover{
+
+    background:white;
+    transform:translateY(-5px);
+
+}
+
+
+
+
+
+
+
+/* ======================================
+       COMMON SECTION STYLE
+====================================== */
+
+
+section{
+
+    padding:80px 8%;
+
+}
+
+
+
+section h2{
+
+    text-align:center;
+    color:#0a2a66;
+    font-size:36px;
+    margin-bottom:15px;
+
+}
+
+
+
+.section-text{
+
+    text-align:center;
+    margin-bottom:40px;
+    color:#666;
+
+}
+
+
+
+
+
+
+
+/* ======================================
+       ADMISSION PROCESS
+====================================== */
+
+
+.process-container{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-top:40px;
+
+}
+
+
+
+
+.process-card{
+
+    background:white;
+    padding:30px 20px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    transition:.3s;
+
+}
+
+
+
+.process-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+
+.number{
+
+    width:60px;
+    height:60px;
+    background:#0a2a66;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    font-size:22px;
+    font-weight:bold;
+
+}
+
+
+
+.process-card h3{
+
+    margin:20px 0 10px;
+    color:#0a2a66;
+
+}
+
+
+
+.process-card p{
+
+    color:#666;
+    line-height:1.6;
+
+}
+
+
+
+
+
+
+
+/* ======================================
+          ELIGIBILITY
+====================================== */
+
+
+.eligibility{
+
+    background:#eef3ff;
+
+}
+
+
+
+
+.eligibility-container{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+    margin-top:40px;
+
+}
+
+
+
+
+.eligibility-card{
+
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.eligibility-card h3{
+
+    color:#0a2a66;
+    margin-bottom:20px;
+
+}
+
+
+
+.eligibility-card ul{
+
+    padding-left:20px;
+
+}
+
+
+
+.eligibility-card li{
+
+    margin-bottom:15px;
+    line-height:1.6;
+
+}
+/* ======================================
+          ADMISSION FORM
+====================================== */
+
+
+.admission-form{
+
+    background:white;
+
+}
+
+
+
+form{
+
+    max-width:1100px;
+    margin:40px auto;
+    background:#f8faff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 5px 25px rgba(0,0,0,0.1);
+
+}
+
+
+
+
+
+.form-section{
+
+    margin-bottom:35px;
+
+}
+
+
+
+.form-section h3{
+
+    color:#0a2a66;
+    font-size:24px;
+    margin-bottom:25px;
+    border-left:5px solid #ffcc00;
+    padding-left:15px;
+
+}
+
+
+
+
+
+.input-group{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+.field{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+
+
+
+.field label,
+.upload-box label{
+
+    font-weight:600;
+    margin-bottom:8px;
+    color:#333;
+
+}
+
+
+
+
+
+.field input,
+.field select,
+textarea{
+
+
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    background:white;
+
+}
+
+
+
+.field input:focus,
+.field select:focus,
+textarea:focus{
+
+    border-color:#0a2a66;
+
+}
+
+
+
+
+
+textarea{
+
+    width:100%;
+    height:130px;
+    resize:none;
+
+}
+
+
+
+
+
+
+
+/* ======================================
+          DOCUMENT UPLOAD
+====================================== */
+
+
+.upload-container{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+
+}
+
+
+
+
+
+.upload-box{
+
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    border:2px dashed #0a2a66;
+    text-align:center;
+
+}
+
+
+
+
+.upload-box input{
+
+    width:100%;
+    margin-top:15px;
+
+}
+
+
+
+
+
+
+/* ======================================
+          FORM BUTTONS
+====================================== */
+
+
+.form-buttons{
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+
+}
+
+
+
+
+.form-buttons button{
+
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+
+
+
+
+.submit-btn{
+
+    background:#0a2a66;
+    color:white;
+
+}
+
+
+
+.submit-btn:hover{
+
+    background:#ffcc00;
+    color:#0a2a66;
+
+}
+
+
+
+
+
+.reset-btn{
+
+    background:#ddd;
+    color:#333;
+
+}
+
+
+
+.reset-btn:hover{
+
+    background:#bbb;
+
+}
+
+
+
+
+
+#message{
+
+    text-align:center;
+    font-weight:bold;
+    margin-top:20px;
+    color:green;
+
+}
+
+
+
+
+
+
+/* ======================================
+          IMPORTANT DATES
+====================================== */
+
+
+.important-dates{
+
+    background:#eef3ff;
+
+}
+
+
+
+.date-container{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-top:40px;
+
+}
+
+
+
+
+
+.date-card{
+
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+
+.date-card h3{
+
+    width:55px;
+    height:55px;
+    background:#0a2a66;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+
+}
+
+
+
+.date-card h4{
+
+    color:#0a2a66;
+    margin:15px 0;
+
+}
+/* ======================================
+          ADMISSION BANNER
+====================================== */
+
+
+.admission-banner{
+
+    background:
+    linear-gradient(
+    rgba(10,42,102,.85),
+    rgba(10,42,102,.85)
+    ),
+    url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1")
+    center/cover no-repeat;
+
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+
+}
+
+
+
+.admission-banner h2{
+
+    color:white;
+    margin-bottom:15px;
+
+}
+
+
+
+.admission-banner p{
+
+    font-size:18px;
+    margin-bottom:30px;
+
+}
+
+
+
+.admission-banner a{
+
+    display:inline-block;
+    background:#ffcc00;
+    color:#0a2a66;
+    padding:14px 30px;
+    border-radius:30px;
+    font-weight:bold;
+
+}
+
+
+
+
+
+/* ======================================
+              FOOTER
+====================================== */
+
+
+footer{
+
+    background:#061b45;
+    color:white;
+    padding:50px 8% 20px;
+
+}
+
+
+
+.footer-container{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+
+}
+
+
+
+.footer-box h3{
+
+    margin-bottom:20px;
+    color:#ffcc00;
+
+}
+
+
+
+.footer-box p{
+
+    line-height:1.7;
+    color:#ddd;
+
+}
+
+
+
+.footer-box ul{
+
+    list-style:none;
+
+}
+
+
+
+.footer-box ul li{
+
+    margin-bottom:12px;
+
+}
+
+
+
+.footer-box a{
+
+    color:white;
+
+}
+
+
+
+.footer-box a:hover{
+
+    color:#ffcc00;
+
+}
+
+
+
+.copyright{
+
+    text-align:center;
+    margin-top:35px;
+    border-top:1px solid rgba(255,255,255,.2);
+    padding-top:20px;
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================================
+          TABLET RESPONSIVE
+====================================== */
+
+
+@media(max-width:992px){
+
+
+.nav-menu{
+
+    margin-right:0;
+    gap:10px;
+
+}
+
+
+.nav-menu a{
+
+    font-size:14px;
+
+}
+
+
+
+.process-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.upload-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.date-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================================
+          MOBILE HAMBURGER
+====================================== */
+
+
+@media(max-width:768px){
+
+
+
+.navbar{
+
+    padding:0 20px;
+
+}
+
+
+
+
+
+.hamburger{
+
+    display:block;
+    z-index:2000;
+
+}
+
+
+
+
+
+.nav-menu{
+
+    position:absolute;
+    top:80px;
+    left:0;
+
+    width:100%;
+
+    background:#0a2a66;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:30px 0;
+
+
+    transform:translateY(-150%);
+
+    transition:.4s ease;
+
+}
+
+
+
+
+.nav-menu.active{
+
+    transform:translateY(0);
+
+}
+
+
+
+
+.nav-menu a{
+
+    font-size:17px;
+
+}
+
+
+
+
+.signup-btn{
+
+    padding:10px 25px;
+
+}
+
+
+
+
+
+
+
+.hero-content h1{
+
+    font-size:38px;
+
+}
+
+
+
+.hero-content p{
+
+    font-size:16px;
+
+}
+
+
+
+
+
+.input-group{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+
+.upload-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+
+.process-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+
+
+.eligibility-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+
+.date-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+form{
+
+    padding:25px;
+
+}
+
+
+
+section h2{
+
+    font-size:28px;
+
+}
+
+
+
+}
