@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Department Page</title>
+
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                background-color: #f8f9fa;
+                color:#333;
+                overflow-x: hidden;
+            }
+
+            header{
+            background-color: #0a2a66;
+            color: #fff;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
+          
+        }
+
+        .logo{
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img{
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .nav-menu{
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin-right: -100px;
+        }   
+
+        .nav-menu ul {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;  
+        }
+
+        .nav-menu a{
+            color:white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-menu a:hover{
+            color: #ffcc00;
+            border-bottom: 4px solid #ffcc00;
+            border-bottom-right-radius: 9px;
+             border-bottom-left-radius: 9px;
+        }
+
+            .dept-banner {
+                background:linear-gradient(rgba(13,71,161,0.85), rgba(18, 52, 102, 0.85));
+                color:white;
+                text-align: center;
+                padding: 90px 20px;
+                
+            }
+
+            .dept-banner h1 {
+                font-size: 42px;
+                margin-bottom: 20px;
+                margin-top:40px;
+            }
+
+            .dept-banner p {
+                font-size: 20px;
+                margin-bottom: 10px;
+               
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 60px auto;
+                padding: 0 20px;
+            }
+
+            .about-dept {
+                display: flex;
+                gap:40px;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-bottom: 60px;
+            }
+
+            .about-text {
+                flex: 1.2;
+                min-width: 300px;
+            }
+
+            .about-text h2 {
+                color:#0d47a1;
+                font-size: 40px;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .about-text p {
+                font-size: 22px;
+                line-height: 1.6;
+                color:#666;
+            }
+
+            .about-img {
+                flex: 1;
+                min-width: 300px;
+            }
+
+            .about-img img {
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .stats{
+                background-color: #0d47a1;
+                color:white;
+                padding: 50px 20px;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .stat-box h3 {
+                font-size: 40px;
+                margin-bottom: 5px;
+                color: #ffca28;
+            }
+
+            .programs {
+                margin: 60px 0;
+            }
+
+            .programs h2 {
+                text-align: center;
+                color:#0d47a1;
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            .program-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            .program-card{
+                background-color: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            }
+
+            .program-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .program-card h4 {
+                color:#0d47a1;
+                margin-bottom: 10px;
+                font-size: 20px;
+            }
+
+            .faculty{
+                margin: 60px 0;
+            }
+
+            .faculty h2 {
+                text-align: center;
+                color:#0d47a1;
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            .faculty-grid {
+                display: flex;
+                gap:25px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .faculty-card {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+                text-align: center;
+                width: 250px;
+            }
+
+            .faculty-card img {
+                width: 100px;
+                height:100px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 10px;
+                border: 3px solid #0d47a1;
+            }
+
+            .faculty-card h4 {
+                color:#0d47a1;
+            }
+
+            .faculty-card p {
+                font-size: 14px;
+                color:#666;
+            }
+
+            .labs {
+                margin: 60px 0;
+            }
+
+            .labs h2 {
+                text-align: center;
+                color:#0d47a1;
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            .lab-list {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .lab-box {
+                background-color: white;
+                padding: 20px 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+                border-left: 5px solid #0d47a1;
+                min-width: 250px;
+            }
+
+            .cta {
+                background: linear-gradient(#0d47a1, #1976d2);
+                color:white;
+                padding: 70px 20px;
+                text-align: center;
+                border-radius: 12px;
+                margin: 60px 0;
+            }
+
+            .cta h2 {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+
+            .btn {
+                background-color: #ffca28;
+                color: #0d47a1;
+                padding: 14px 35px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: bold;
+                display: inline-block;
+                margin-top: 20px;
+                transition: 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #ffb300;
+            }
+
+
+            .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 36px;
+            height: 28px;
+            background: rgba(255,255,255,0.18);
+            border: 2px solid #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            padding: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .hamburger {
+                display: flex !important;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                width: min(240px, 82vw);
+                background: rgba(10, 42, 102, 0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 18px;
+                gap: 12px;
+                border-radius: 10px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+                z-index: 1000;
+                margin-right: 0;
+            }
+
+            .nav-menu.open {
+                display: flex !important;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                display: block;
+                font-size: 18px;
+                width: 100%;
+                padding: 6px 0;
+            }
+        }
+
+            .footer {
+                background-color: #0d47a1;
+                color:white;
+                text-align: center;
+                padding: 20px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+         <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.png">
+                NIRVANA COLLEGE
+            </div>
+
+            <!--hamburger btn-->
+            <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+         <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="department.html">DEPARTMENTS</a></li>
+            <li><a href="admissions.html">ADMISSIONS</a></li>
+             <li><a href="events.html">EVENT CALENDAR</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="login.html">ADMIN LOGIN</a></li>
+            <li><a href="signup.html">SIGN UP</a></li>
+         </ul>
+        </nav>
+    </header>
+
+   <section class="dept-banner">
+    <h1>Department of Science and Technology</h1>
+    <p>Shaping Future Innovators Since 2010</p>
+   </section>
+
+   <div class="container">
+    <section class="about-dept">
+        <div class="about-text">
+            <h2>About Our Department</h2>
+            <p>The department of science and technology is committed to excellence in education, research, and innovation. We provide industry oriented curriculum with hands-on training in AI, Cloud, Web development, and Data science</p>
+            <br>
+            <p>Our Department has state-of-the-art labs, experienced faculty and 95% placement record in top MNCs like TCS, Infosys, Wipro and Google</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-box"><h3>1200+</h3><p>Students</p></div>
+        <div class="stat-box"><h3>50+</h3><p>Faculty Members</p></div>
+        <div class="stat-box"><h3>95%</h3><p>Placement Rate</p></div>
+        <div class="stat-box"><h3>8</h3><p>Modern Labs </p></div>
+    </section>
+
+    <div class="container">
+        <section class="programs">
+            <h2>Academic Programs</h2>
+            <div class="program-grid">
+                <div class="program-card">
+                    <h4>B.E. Science and Technology</h4>
+                    <p>Duration: 4 Years| Intake: 120 Students<br>Core Subjects: DSA, DBMS, OS, AI, ML</p>
+                </div>
+
+                <div class="program-card">
+                    <h4>M.E. Science and Technology</h4>
+                    <p>Duration: 2 years | Intake:30 Students <br> Specialization in AI and Data Science</p>
+                </div>
+
+                <div class="program-card">
+                    <h4>Ph.D. in CSE</h4>
+                    <p>Research areas: AI, Cyber Security, IoT, Cloud Computing</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="labs">
+            <h2>Our Laboratories</h2>
+            <div class="lab-list">
+                <div class="lab-box">
+                    Programming Lab
+                </div>
+
+                <div class="lab-box">AI & ML Lab</div>
+
+                <div class="lab-box">Networking Lab</div>
+
+                <div class="lab-box">Data Science Lab</div>
+
+                <div class="lab-box">Cyber Security Lab</div>
+
+                <div class="lab-box">Cloud Computing Lab</div>
+            </div>
+        </section>
+
+        <section class="faculty">
+            <h2>our Faculty Members</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <img src="https://t4.ftcdn.net/jpg/05/22/11/23/360_F_522112353_aSznFh7yyJ8RFQDZGGa91oJgfXx36pFk.jpg">
+                    <h4>Dr. Rajesh Kumar</h4>
+                    <p>Head of Department <br>Ph.D, 15 years Experience</p>
+                </div>
+
+                <div class="faculty-card">
+                    <img src="https://thumbs.dreamstime.com/b/female-university-professor-looking-camera-holding-journal-writing-classroom-155809447.jpg">
+                    <h4>Prof. Sneha Patil</h4>
+                    <p>Associate Professor <br>AI & Machine Learning specialist,  10 years Experience</p>
+                </div>
+
+                <div class="faculty-card">
+                    <img src="https://img.magnific.com/free-photo/senior-male-professor-holding-notebook-standing-against-blackboard_23-2148200961.jpg?semt=ais_hybrid&w=740&q=80">
+                    <h4>Prof. Amit Sharma</h4>
+                    <p>Assistant Professor <br>Network Security specialist,  5 years Experience</p>
+                </div>
+
+                <div class="faculty-card">
+                    <img src="https://media.istockphoto.com/id/1365527907/photo/portrait-of-smiling-mature-teacher-with-laptop-in-the-classroom.jpg?s=612x612&w=0&k=20&c=9Zgf2IEHkNV7LTEcmFLgOTqY8jaX0K5P-8IYmsyafA4=">
+                    <h4>Prof. Priya Desai</h4>
+                    <p>Associate Professor <br>Data Science specialist,  6 years Experience</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Join Our Department</h2>
+            <p>Admissions open for 2026-27. Build your future in Technology</p>
+            <a href="admissions.html" class="btn">Apply Now</a>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Nirvana College. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger && navMenu) {
+            const closeMenu = () => {
+                navMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            };
+
+            hamburger.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const isOpen = navMenu.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+        }
+    </script>
+   
+    </body>
+</html>
