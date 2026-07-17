@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Calendar - College Website</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- Navbar Styles --- */
+        .navbar {
+            background-color: #003366; /* Academic Blue */
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo{
+                    display: flex;
+                    font-size:22px;
+                    font-weight:bold;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .logo img{
+                    width:60px;
+                    height:70px;
+                    margin-right: 12px;
+                }
+
+        .nav-logo h2 {
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffcc00; /* Accent Yellow */
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- main Layout & Filter --- */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: #fff;
+            border: 2px solid #003366;
+            color: #003366;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: #003366;
+            color: #fff;
+        }
+
+        /* --- Events Grid --- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .event-badge {
+            align-self: flex-start;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 20px;
+            margin: 1.5rem 1.5rem 0 1.5rem;
+        }
+
+        /* Category Color Badges */
+        .badge-seminar { background-color: #e3f2fd; color: #0d47a1; }
+        .badge-workshop { background-color: #e8f5e9; color: #1b5e20; }
+        .badge-cultural { background-color: #fff3e0; color: #e65100; }
+
+        .event-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: #003366;
+        }
+
+        .event-details {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .event-details p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-description {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn-register {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 0.7rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn-register:hover {
+            background-color: #002244;
+        }
+
+        /* --- Mobile Optimization Media Queries --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #003366;
+                padding: 1.5rem;
+                box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            /* Hamburger transform into X when active */
+            .hamburger.toggle span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.toggle span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.toggle span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="nirvana.webp" alt="logo">
+            <h2>Nirvana College</h2>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Homepage</a></li>
+            <li><a href="aboutus.html">AboutUs</a></li>
+            <li><a href="department.html">Departments</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="events.html">Event</a></li>
+            <li><a href="contact.html">contact</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="signup.html">signup</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Block -->
+    <header class="header">
+        <h1>Events Calendar</h1>
+        <p>Stay updated with the latest happenings, academic progress, and vibrant campus life events.</p>
+    </header>
+
+    <!-- Content & Interactive Filter Area -->
+    <main class="container">
+        
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterEvents('all')">All Events</button>
+            <button class="filter-btn" onclick="filterEvents('seminar')">Seminars</button>
+            <button class="filter-btn" onclick="filterEvents('workshop')">Workshops</button>
+            <button class="filter-btn" onclick="filterEvents('cultural')">Cultural Events</button>
+        </div>
+
+        <div class="events-grid">
+            
+            <!-- Event 1: Seminar -->
+            <div class="event-card" data-category="seminar">
+                <span class="event-badge badge-seminar">Seminar</span>
+                <div class="event-content">
+                    <h3 class="event-title">Future of AI in Education</h3>
+                    <div class="event-details">
+                        <p><strong>📅 Date:</strong> Aug 24, 2026</p>
+                        <p><strong>🕒 Time:</strong> 10:00 AM - 1:00 PM</p>
+                        <p><strong>📍 Venue:</strong> Auditorium Main Hall</p>
+                    </div>
+                    <p class="event-description">Join international tech experts discussing the disruptive and empowering features of AI systems within global curricula frameworks.</p>
+                    <a href="#" class="btn-register">RSVP / Register</a>
+                </div>
+            </div>
+
+            <!-- Event 2: Workshop -->
+            <div class="event-card" data-category="workshop">
+                <span class="event-badge badge-workshop">Workshop</span>
+                <div class="event-content">
+                    <h3 class="event-title">UI/UX Design Masterclass</h3>
+                    <div class="event-details">
+                        <p><strong>📅 Date:</strong> Sep 02, 2026</p>
+                        <p><strong>🕒 Time:</strong> 11:30 AM - 4:00 PM</p>
+                        <p><strong>📍 Venue:</strong> IT Lab 3</p>
+                    </div>
+                    <p class="event-description">A hands-on, collaborative experience teaching fundamental principles of web layouts, prototyping tools, and user psychology tracking.</p>
+                    <a href="#" class="btn-register">Book a Seat</a>
+                </div>
+            </div>
+
+            <!-- Event 3: Cultural -->
+            <div class="event-card" data-category="cultural">
+                <span class="event-badge badge-cultural">Cultural Event</span>
+                <div class="event-content">
+                    <h3 class="event-title">Annual Spring Beats Fest</h3>
+                    <div class="event-details">
+                        <p><strong>📅 Date:</strong> Oct 15, 2026</p>
+                        <p><strong>🕒 Time:</strong> 5:00 PM - 10:00 PM</p>
+                        <p><strong>📍 Venue:</strong> Open Air Amphitheater</p>
+                    </div>
+                    <p class="event-description">Celebrate community diversity through interactive dance acts, live campus bands, visual art galleries, and authentic food trucks.</p>
+                    <a href="#" class="btn-register">Get Passes</a>
+                </div>
+            </div>
+
+            <!-- Event 4: Seminar -->
+            <div class="event-card" data-category="seminar">
+                <span class="event-badge badge-seminar">Seminar</span>
+                <div class="event-content">
+                    <h3 class="event-title">Research Methods & Ethics</h3>
+                    <div class="event-details">
+                        <p><strong>📅 Date:</strong> Oct 22, 2026</p>
+                        <p><strong>🕒 Time:</strong> 09:00 AM - 12:00 PM</p>
+                        <p><strong>📍 Venue:</strong> Seminar Hall B</p>
+                    </div>
+                    <p class="event-description">Crucial parameters breakdown concerning copyright integrity, peer validation frameworks, and modern formatting standards.</p>
+                    <a href="#" class="btn-register">RSVP / Register</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Layer -->
+    <script>
+        // --- Hamburger Menu Script ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        // --- Category Filter Script ---
+        function filterEvents(category) {
+            // Update Active Class on Buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter the Card Elements
+            const cards = document.querySelectorAll('.event-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
