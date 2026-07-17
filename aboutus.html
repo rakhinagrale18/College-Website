@@ -1,0 +1,800 @@
+<html>
+
+<head>
+    <title>college_website</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            background: rgba(15, 91, 179, 0.959);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            font-size: 22px;
+            font-weight: bold;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 70px;
+            margin-right: 12px;
+        }
+
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 42px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+            padding: 6px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        nav#navMenu {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            padding: 0;
+        }
+
+        nav#navMenu ul {
+            display: flex;
+            flex-direction: row;
+            gap: 18px;
+            padding-left: 0;
+            margin: 0;
+            width: auto;
+        }
+
+        nav#navMenu ul li {
+            margin-left: 0;
+        }
+
+        nav#navMenu ul li a {
+            color: #fff;
+            font-size: 15px;
+            display: block;
+            padding: 6px 0;
+            white-space: nowrap;
+        }
+
+        .menu-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .28s;
+            z-index: 900;
+        }
+
+        .menu-backdrop.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar {
+                width: 95%;
+                padding: 12px 56px 12px 12px;
+                position: relative;
+            }
+
+            .logo {
+                font-size: 18px;
+                padding-right: 44px;
+            }
+
+            .logo img {
+                width: 48px;
+                height: 56px;
+            }
+
+            .hamburger {
+                display: flex !important;
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav#navMenu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: min(82%, 320px);
+                height: 100vh;
+                background: rgba(15, 91, 179, 0.98);
+                align-items: flex-start;
+                padding: 80px 24px 24px;
+                transition: right .28s ease;
+                z-index: 1000;
+                box-shadow: -8px 0 24px rgba(0,0,0,0.2);
+            }
+
+            nav#navMenu.open {
+                right: 0;
+            }
+
+            nav#navMenu ul {
+                flex-direction: column;
+                gap: 18px;
+                width: 100%;
+            }
+
+            nav#navMenu ul li a {
+                font-size: 18px;
+                padding: 6px 0;
+            }
+
+        }
+
+
+        /*...........................Tablet..................*/
+        @media(max-width:600px) {
+            .navbar {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                width: 100%;
+                padding: 12px 16px;
+            }
+
+            nav {
+                width: auto;
+            }
+
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav ul li {
+                margin: 0;
+            }
+
+            nav ul li a {
+                font-size: 14px;
+            }
+        }
+
+        /*laptop*/
+        @media(max-width:1024px) {
+            .navbar {
+                width: 95%;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+
+            nav ul li {
+                margin: 0;
+            }
+
+        }
+
+
+
+        .hero-banner {
+            background: #c0c7d1;
+            padding: 20px 16px 0;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            max-height: 460px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+        }
+
+        .hero-content {
+            background: #c0c7d1;
+            padding: 20px 16px 36px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            color: blue;
+            margin: 0 0 12px;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+        }
+
+        .hero-content p {
+            margin: 0 auto 18px;
+            max-width: 700px;
+            line-height: 1.6;
+            color: #1b1a1a;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+
+
+
+
+
+
+
+
+        .class {
+            background-color: rgb(197, 152, 93);
+            text-align: center;
+            padding: 40px;
+
+
+        }
+
+        .btn-Explore {
+            display: inline-block;
+            color: orange;
+            color: black;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(201, 228, 228);
+        }
+
+        .btn-Explore:hover {
+            color: #0d47a1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .left h2 {
+            margin-bottom: 20px;
+        }
+
+        .right {
+            flex: 1;
+            min-width: 28px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .right img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px blueviolet;
+            display: block;
+        }
+
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .btn-contactus {
+            display: inline-block;
+            background-color: blue;
+            color: black;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        .btn-contactus:hover {
+            background-color: pink;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .heading {
+            text-align: center;
+            color: blue;
+            margin-bottom: 50px;
+        }
+
+        .box-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .better {
+            background: pink;
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px blueviolet;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .better .icon {
+            margin-bottom: 20px;
+
+        }
+
+        .better h3 {
+            margin-bottom: 15px;
+            transition: color 0.35s ease;
+
+        }
+
+        .better p {
+            transition: color 0.35s ease;
+            line-height: 1.6;
+        }
+
+        .better:hover {
+            background: green;
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25 px yellow;
+        }
+
+        .better:hover h3,
+        .better:hover p {
+            color: aquamarine;
+        }
+
+        .builder {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        .info-box {
+            position: relative;
+            width: 250px;
+            height: 300px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 12px green;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            transition: background 0.4s ease, transform 0.3s ease;
+        }
+
+        .info-box h3 {
+            color: black;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0;
+            transition: margin-bottom 0.4s ease;
+        }
+
+        .info-box p {
+            color: blue;
+            line-height: 1.5;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+        }
+
+        .info-box:hover {
+            background: rgb(94, 212, 110);
+            transform: translateY(-6px);
+        }
+
+        .info-box:hover h3 {
+            margin-bottom: 14px;
+        }
+
+        .info-box:hover p {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 4px;
+
+
+        }
+
+        @media(max-width:700px) {
+            .info-box {
+                width: 90%;
+            }
+
+        }
+
+        .status-banner {
+            background: rgb(73, 45, 197);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .point h2 {
+            margin: 0 0 5px 0;
+
+        }
+
+        .point p {
+            margin: 0;
+
+        }
+
+        footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .page {
+            justify-content: center;
+            margin-left: 400px;
+        }
+
+        .ledger {
+            width: 100%;
+            max-width: 480px;
+            background: rgb(218, 210, 210);
+            border: 1px solide pink;
+            padding: 32px 36px;
+            border-radius: 4px;
+        }
+
+        .ledger h3 {
+            margin-bottom: 24px;
+        }
+
+        .ledger-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 0;
+
+        }
+
+        .ledger-row .yr {
+            color: black;
+
+        }
+
+        .ledger-row .ev {
+            color: black;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="clg.png" alt="logo">
+
+
+                NIRVANA COLLEGE
+            </div>
+
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">ABOUT US</a></li>
+                    
+
+                    <li><a href="department.html">DEPARTMENTS</a></li>
+                    <li><a href="admissions.html">ADMISSIONS</a></li>
+
+                    <li><a href="events.html">EVENT CALENDAR</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    
+                    <li><a href="login.html">ADMIN LOGIN</a></li>
+                    <li><a href="signup.html">SIGN UP</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <div class="hero-banner">
+        <img src="c:\Users\ADMIN\Desktop\img\logo.jpg" alt="College campus" />
+    </div>
+    <div class="hero-content">
+        <h1>Welcome to Nirvana College</h1>
+        <p>Explore academic excellence, innovation, and a nurturing campus environment.</p>
+        <div class="hero-buttons">
+            <a href="department.html" class="btn-Explore">Explore Departments</a>
+            <a href="contact.html" class="btn-contactus">Contact Us</a>
+        </div>
+    </div>
+    <br>
+
+
+    <h1 style="color: blue; text-align: left; padding-left: 300px;">Who we are</h1>
+    <div class="container">
+        <div class="left">
+            <h2>About Us</h2>
+            <p> Nirvana College, is commited to provideing quality education taht empowers students to acheive </p>
+            <p>Academic excellence and personal growth.Since its establishment college has dedicated to fostering</p>
+            <p> a nuturning and inclusive learning envirnonaments</p>
+            <p>where students can explore diverse field of study.with a team experienced and dedicated</p>
+            <p> faculity,state of-the-art infrastrucure and a curriculum designed to meet the demands of a rapidly
+                evolving world</p>
+            <br>
+
+            <div class="exam">
+                <a href="contact.html" class="btn-contactus">Contactus</a>
+            </div>
+        </div>
+        <div class="right">
+
+
+            <img src="c:\Users\ADMIN\Desktop\img\lg.jpg">
+        </div>
+    </div>
+    <h1 class="heading">Vision & Mission</h1>
+    <div class="box-container">
+        <div class="better">
+            <div class="icon"></div>
+            <h3>our vision</h3>
+            <p>To be a leading institution recognizes for academic excellence,innovation, and saping future leaders who
+                make a positive imapct on society</p>
+        </div>
+        <div class="better">
+            <div class="icon"></div>
+            <h3>our mission</h3>
+            <p>To provide quality education foster a nurturning learning environment and empower students with the
+                skills and values needed to succeed in a changing world</p>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <center>
+        <h1>Milestones</h1>
+    </center>
+    <div class="page">
+        <div class="ledger">
+            <h3>Milestones</h3>
+            <div class="ledger-row">
+                <span class="yr">1968</span>
+                <span class="ev">Found as Nirvana Institute </span>
+            </div>
+
+
+            <div class="ledger-row">
+                <span class="yr">1984</span>
+                <span class="ev">Became a degree-granting institute</span>
+            </div>
+
+            <div class="ledger-row">
+                <span class="yr">1997</span>
+                <span class="ev">Computer science departmente established</span>
+            </div>
+            <div class="ledger-row">
+                <span class="yr">2010</span>
+                <span class="ev">New reasearch & innvoation campus opens</span>
+            </div>
+            <div class="ledger-row">
+                <span class="yr">2023</span>
+                <span class="ev">Ranked among top 50 technical institutes</span>
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <center>
+        <h1 style="color: blue;">What We Stand For</h1>
+    </center>
+    <div class="builder">
+        <div class="info-box">
+            <h3>Intigrity </h3>
+            <h3>what we stand for</h3>
+            <p>Honesty in research, teaching , and assesment - no shortcuts.</p>
+        </div>
+        <div class="info-box">
+            <h3>Curiosity </h3>
+            <h3>What we stand for </h3>
+            <p>Encouraaging students to askkk why,not just how.</p>
+        </div>
+        <div class="info-box">
+            <h3>Inclusion</h3>
+            <h3>What we stand for</h3>
+            <p>Acampus open to every background,discipline, and idea.</p>
+        </div>
+        <div class="info-box">
+            <h3>Impact </h3>
+            <h3>What we stand for</h3>
+            <p>Working that's judged by the problem it actually solves.</p>
+        </div>
+    </div>
+    <div class="status-banner">
+        <div class="point">
+            <h2>12,400+</h2>
+            <p>Alumni Worldwide</p>
+        </div>
+        <div class="point">
+            <h2>48</h2>
+            <p>Degree Programs</p>
+        </div>
+
+        <div class="point">
+            <h2>210</h2>
+            <p>Faculity Members</p>
+        </div>
+
+        <div class="point">
+            <h2>30+</h2>
+            <p>Years of Teaching </p>
+        </div>
+
+
+
+
+
+
+    </div>
+    <footer>
+        &copy; 2026 Nirvana college Educate Empower and Elivate ,All Rights Reserived
+    </footer>
+    <script>
+        const btn = document.querySelector('.hamburger');
+        const nav = document.getElementById('navMenu');
+        const backdrop = document.createElement('div');
+        backdrop.className = 'menu-backdrop';
+        document.body.appendChild(backdrop);
+
+        if (btn && nav) {
+            function closeMenu() {
+                nav.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                backdrop.classList.remove('visible');
+                document.body.classList.remove('menu-open');
+            }
+
+            function openMenu() {
+                nav.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                backdrop.classList.add('visible');
+                document.body.classList.add('menu-open');
+            }
+
+            btn.addEventListener('click', () => {
+                const opened = nav.classList.contains('open');
+                if (opened) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+            backdrop.addEventListener('click', closeMenu);
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+        }
+    </script>
+
+
+
+</body>
+
+</html>
